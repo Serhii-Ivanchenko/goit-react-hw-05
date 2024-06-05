@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 import { getMovieByQuery, getMovieCredits, getMovieDetails, getMovieReviews, getTrendingMovies } from '../tmdb-api-fetch';
+import Navigation from '../Navigation/Navigation';
 
 function App() {
   useEffect(() => {
@@ -13,7 +14,9 @@ function App() {
     getData();
   }, []);
 
-  return <></>;
+  return <>
+  <Navigation/>
+  </>;
 }
 
 export default App;
