@@ -8,23 +8,14 @@ import MoviesPage from '../../pages/MoviesPage/MoviesPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 function App() {
-  useEffect(() => {
-    async function getData() {
-      try {
-        const data = await getTrendingMovies();
-        console.log(data);
-      } catch (error) {}
-    }
-    getData();
-  }, []);
-
-  return (
+    return (
     <>
       <Navigation />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          {/* <Route path='movies/:movieId' element={} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

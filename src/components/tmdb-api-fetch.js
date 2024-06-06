@@ -9,7 +9,7 @@ const options = {
   },
 };
 
-export const getTrendingMovies = async (currentPage, time_window = 'day') => {
+export const getTrendingMovies = async (currentPage, time_window = 'week') => {
   const params = {
     language: 'en-US',
     page: currentPage,
