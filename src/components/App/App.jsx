@@ -1,21 +1,22 @@
-import { useEffect } from 'react';
+
 import './App.css';
-import { getMovieByQuery, getMovieCredits, getMovieDetails, getMovieReviews, getTrendingMovies } from '../tmdb-api-fetch';
+
 import Navigation from '../Navigation/Navigation';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/HomePage/HomePage';
 import MoviesPage from '../../pages/MoviesPage/MoviesPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import MovieDetailsPage from '../../pages/MovieDetailsPage/MovieDetailsPage';
 
 function App() {
-    return (
+  return (
     <>
       <Navigation />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          {/* <Route path='movies/:movieId' element={} /> */}
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

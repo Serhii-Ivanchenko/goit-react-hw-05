@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const defaults = {
   poster:
     'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg',
@@ -18,9 +20,9 @@ export default function MovieCard({ movie }) {
         alt={movie.title || defaults.title}
       />
       <div>
-        <h2>{movie.original_title || defaults.title}</h2>
+        <Link to={`/movies/${movie.id}`}>{movie.original_title || defaults.title}</Link>
+              
         <p>Release Date: {movie.release_date || defaults.date}</p>
-        <p>Vote Average: {movie.vote_average || defaults.vote}</p>
       </div>
     </div>
   );
