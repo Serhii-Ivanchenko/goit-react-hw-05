@@ -13,7 +13,7 @@ export default function HomePage() {
     async function getData() {
       try {
         setIsLoading(true);
-        setIsError(false);
+        // setIsError(false);
         const data = await getTrendingMovies();
         setTrendMovies(data.results);
       } catch (error) {

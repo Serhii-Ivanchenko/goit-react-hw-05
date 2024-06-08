@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../components/tmdb-api-fetch';
+import css from './MovieDetailsPage.module.css';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Loader from '../../components/Loader/Loader';
 
 const defaults = {
   poster:
@@ -12,7 +15,7 @@ const defaults = {
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -20,7 +23,7 @@ export default function MovieDetailsPage() {
     async function getData() {
       try {
         setIsLoading(true);
-        setIsError(false);
+        // setIsError(false);
         const data = await getMovieDetails(movieId);
         setMovie(data);
       } catch (error) {
@@ -31,10 +34,12 @@ export default function MovieDetailsPage() {
     }
     getData();
   }, [movieId]);
-  console.log('movie', movie);
 
   return (
     <div>
+      {isError && <ErrorMessage />}
+      {isLoading && <Loader />}
+      <p>Movie details</p>
       <img
         src={
           movie.poster_path
@@ -48,12 +53,21 @@ export default function MovieDetailsPage() {
       <h3>Overview</h3>
       <p>{movie.overview}</p>
       <h3>Genres</h3>
-      <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
-      <p></p>
+      {/* <ul className={css.genresList}>
+        {movie.genres.map(({ id, name }) => (
+          <li key={id}>{name}</li>
+        ))}
+      </ul> */}
+      <h4>Additional information</h4>
       <ul>
-        <li></li>
-        <li></li>
+        <li>
+          <NavLink to="cast">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews">Reviews</NavLink>
+        </li>
       </ul>
+      <Outlet />
     </div>
   );
 }

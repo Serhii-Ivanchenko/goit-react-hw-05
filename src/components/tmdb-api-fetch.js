@@ -9,63 +9,30 @@ const options = {
   },
 };
 
-export const getTrendingMovies = async (currentPage, time_window = 'week') => {
-  const params = {
-    language: 'en-US',
-    page: currentPage,
-  };
-  const response = await axios.get(`/trending/movie/${time_window}`, {
-    ...options,
-    params,
-  });
+export const getTrendingMovies = async () => {
+  const response = await axios.get(`/trending/movie/week`, options);
   return response.data;
 };
 
-export const getMovieByQuery = async (currentPage, searchQuery) => {
-  const params = {
-    language: 'en-US',
-    query: searchQuery,
-    page: currentPage,
-  };
+export const getMovieByQuery = async searchQuery => {
   const response = await axios.get(
-    'search/movie?include_adult=false&language=en-US&page=1',
-    {
-      ...options,
-      params,
-    }
+    `search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`,
+    options
   );
   return response.data;
 };
 
-export const getMovieDetails = async (movieId = '940721') => {
-  const params = {
-    language: 'en-US',
-  };
-  const response = await axios.get(`/movie/${movieId}`, {
-    ...options,
-    params,
-  });
+export const getMovieDetails = async movieId => {
+  const response = await axios.get(`/movie/${movieId}`, options);
   return response.data;
 };
 
-export const getMovieCredits = async (movieId = '940721') => {
-  const params = {
-    language: 'en-US',
-  };
-  const response = await axios.get(`/movie/${movieId}/credits`, {
-    ...options,
-    params,
-  });
+export const getMovieCredits = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/credits`, options);
   return response.data;
 };
 
-export const getMovieReviews = async (movieId = '940721') => {
-  const params = {
-    language: 'en-US',
-  };
-  const response = await axios.get(`/movie/${movieId}/reviews`, {
-    ...options,
-    params,
-  });
+export const getMovieReviews = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, options);
   return response.data;
 };
