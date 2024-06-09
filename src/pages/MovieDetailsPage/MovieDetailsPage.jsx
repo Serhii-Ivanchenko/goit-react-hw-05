@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../components/tmdb-api-fetch';
 import css from './MovieDetailsPage.module.css';
@@ -71,7 +71,10 @@ export default function MovieDetailsPage() {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<Loader/>}>
+        <Outlet />
+      </Suspense>
+
     </div>
   );
 }
