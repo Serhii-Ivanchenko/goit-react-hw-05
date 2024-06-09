@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 
 export default function MovieReviews() {
   const { movieId } = useParams();
-  const [reviews, setReviews] = useState({});
+  const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -31,14 +31,14 @@ export default function MovieReviews() {
     <div>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      {/* <ul className={css.reviewsList}>
+      <ul className={css.reviewsList}>
       {reviews.map((review) => (
         <li key={review.id}>
           <p className={css.author}>Author: {review.author}</p>
           <p>{review.content}</p>
         </li>
       ))}
-    </ul> */}
+    </ul>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import Loader from '../Loader/Loader';
 
 export default function MovieCast() {
   const { movieId } = useParams();
-  const [credits, setCredits] = useState({});
+  const [credits, setCredits] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -31,7 +31,7 @@ console.log('cast', credits);
     <div>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      {/* <ul className={css.creditsList}>
+      <ul className={css.creditsList}>
         {credits.map(cast => (
           <li key={cast.id}>
             <div>
@@ -44,7 +44,7 @@ console.log('cast', credits);
             <p>Character: {cast.character}</p>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 }

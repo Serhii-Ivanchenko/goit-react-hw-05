@@ -34,7 +34,7 @@ export default function MovieDetailsPage() {
     }
     getData();
   }, [movieId]);
-
+console.log(movie);
   return (
     <div>
       {isError && <ErrorMessage />}
@@ -53,11 +53,11 @@ export default function MovieDetailsPage() {
       <h3>Overview</h3>
       <p>{movie.overview}</p>
       <h3>Genres</h3>
-      {/* <ul className={css.genresList}>
-        {movie.genres.map(({ id, name }) => (
+      <ul className={css.genresList}>
+        {movie?.genres?.map(({ id, name }) => (
           <li key={id}>{name}</li>
         ))}
-      </ul> */}
+      </ul>
       <h4>Additional information</h4>
       <ul>
         <li>
