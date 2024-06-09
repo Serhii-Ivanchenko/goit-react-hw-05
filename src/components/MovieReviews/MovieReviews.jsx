@@ -26,7 +26,7 @@ export default function MovieReviews() {
     }
     getReviews();
   }, [movieId]);
-  console.log('reviews', reviews);
+
   return (
     <div>
       {isError && <ErrorMessage />}

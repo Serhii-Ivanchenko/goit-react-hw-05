@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from '../../components/tmdb-api-fetch';
 import css from './MovieDetailsPage.module.css';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -19,6 +19,9 @@ export default function MovieDetailsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const location = useLocation();
+  const goBackRef = useRef(location.state ?? '/movies');
+
   useEffect(() => {
     async function getData() {
       try {
@@ -34,12 +37,13 @@ export default function MovieDetailsPage() {
     }
     getData();
   }, [movieId]);
-console.log(movie);
+
   return (
     <div>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      <p>Movie details</p>
+
+      <Link to={goBackRef.current}>GO BACK</Link>
       <img
         src={
           movie.poster_path

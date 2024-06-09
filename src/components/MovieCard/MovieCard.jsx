@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 
 const defaults = {
   poster:
@@ -7,9 +7,11 @@ const defaults = {
 };
 
 export default function MovieCard({ movie }) {
+  const location = useLocation();
+
   return (
-      <div>
-          <img
+    <div>
+      <img
         src={
           movie.poster_path
             ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
@@ -18,7 +20,9 @@ export default function MovieCard({ movie }) {
         alt={movie.title || defaults.title}
       />
       <div>
-        <Link to={`/movies/${movie.id}`}>{movie.title || defaults.title}</Link>
+        <Link to={`/movies/${movie.id}`} state={location}>
+          {movie.title || defaults.title}
+        </Link>
       </div>
     </div>
   );

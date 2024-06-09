@@ -26,7 +26,7 @@ export default function MovieCast() {
     }
     getCast();
   }, [movieId]);
-console.log('cast', credits);
+
   return (
     <div>
       {isError && <ErrorMessage />}

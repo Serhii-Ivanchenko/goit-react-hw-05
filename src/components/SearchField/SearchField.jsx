@@ -29,6 +29,7 @@ export default function SearchField({ onSearch }) {
           type="text"
           value={searchQuery}
           onChange={handleInputChange}
+          placeholder="Enter movie name"
         />
         <button className={css.searchBtn} type="submit">
           <BsSearch className={css.searchIcon} />
