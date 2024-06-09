@@ -29,6 +29,7 @@ export default function HomePage() {
     <div>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
+      <h2>Trending movies this week</h2>
       <MovieList movies={trendMovies} />
     </div>
   );
