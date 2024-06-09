@@ -3,6 +3,7 @@ import MovieList from '../../components/MovieList/MovieList';
 import { getTrendingMovies } from '../../components/tmdb-api-fetch';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
+import css from './HomePage.module.css';
 
 export default function HomePage() {
   const [trendMovies, setTrendMovies] = useState([]);
@@ -29,7 +30,7 @@ export default function HomePage() {
     <div>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      <h2>Trending movies this week</h2>
+      <h2 className={css.title}>Trending movies this week</h2>
       <MovieList movies={trendMovies} />
     </div>
   );
