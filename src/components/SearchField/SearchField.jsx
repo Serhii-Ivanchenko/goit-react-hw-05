@@ -21,10 +21,11 @@ export default function SearchField({ onSearch }) {
   };
 
   return (
-    <header className={css.header}>
+    <div className={css.searchBar}>
       <Toaster />
       <form className={css.searchForm} onSubmit={handleSubmit}>
         <input
+          className={css.searchInput}
           name="searchQuery"
           type="text"
           value={searchQuery}
@@ -35,6 +36,6 @@ export default function SearchField({ onSearch }) {
           <BsSearch className={css.searchIcon} />
         </button>
       </form>
-    </header>
+    </div>
   );
 }

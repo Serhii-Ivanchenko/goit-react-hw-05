@@ -8,6 +8,11 @@
     margin-bottom: 10px;
     border-radius: 5px;
     background-color: #808080;
+    border: 1px solid transparent;
+}
+
+.goBackBtn:hover{
+    border: 1px solid #ffffff;
 }
 
 .movieDetails {
