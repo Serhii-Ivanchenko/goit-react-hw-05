@@ -32,13 +32,13 @@ export default function MovieReviews() {
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
       <ul className={css.reviewsList}>
-      {reviews.map((review) => (
-        <li key={review.id}>
-          <p className={css.author}>Author: {review.author}</p>
-          <p>{review.content}</p>
-        </li>
-      ))}
-    </ul>
+        {reviews.map(review => (
+          <li key={review.id} className={css.reviewsListItem}>
+            <p className={css.author}>Author: {review.author}</p>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

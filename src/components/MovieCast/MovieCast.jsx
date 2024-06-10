@@ -33,14 +33,14 @@ export default function MovieCast() {
       {isLoading && <Loader />}
       <ul className={css.creditsList}>
         {credits.map(cast => (
-          <li key={cast.id}>
+          <li key={cast.id} className={css.creditsListItem}>
             <div>
               <img
                 src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
                 alt={cast.name}
               />
             </div>
-            <p className={css.name}>{name}</p>
+            <p className={css.name}>{cast.name}</p>
             <p>Character: {cast.character}</p>
           </li>
         ))}
